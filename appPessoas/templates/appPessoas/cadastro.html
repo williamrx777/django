@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<ul class="nav justify-content-center bg-dark">
+    <li  class="nav-item"> <a href="{% url 'pessoas:home' %}" class="btn nav-link" role="button"> Home  </a> </li>
+    <li  class="nav-item"> <a href="{% url 'pessoas:cadastro' %}"  class="btn  nav-link" role="button"> Novo </a> </li>
+    <li  class="nav-item"> <a href="{% url 'pessoas:lista' %}" class="btn  nav-link" role="button" > listagem </a> </li>
+</ul>
+
+<div class="container ml-4" style="padding-bottom: 20px;">
+    <h3> Cadastro de Cliente </h3>
+
+    <form method="POST" action="{% url 'pessoas:cadastrar' %}">
+
+        {% csrf_token %}
+
+        <h4> Dados do Cliente </h4>
+        <div class="form-group row">
+             <label id="id_nome" class="col-sm-1"> {{form.nome.label}}  </label>
+            <div class="col-sm-5">
+                 {{ form.nome }}
+            </div>
+        </div>
+        <br />
+
+          <div class="form-group row">
+             <label id="id_email" class="col-sm-1"> {{form.email.label}}  </label>
+            <div class="col-sm-5">
+                 {{ form.email }}
+            </div>
+        </div>
+        <br />
+        <h4> Dados do Endereço </h4>
+          <div class="form-group row">
+             <label id="id_cep" class="col-sm-1"> {{form.cep.label}}  </label>
+            <div class="col-sm-3">
+                 {{ form.cep }}
+            </div>
+              <div class="col-sm-2">
+              <input type="submit" value="Carregar endereço"
+                     class="form-control btn btn-success"
+              name="pesquisar"/>
+              </div>
+
+        </div>
+        <br />
+
+  <div class="form-group row">
+             <label id="id_uf" class="col-sm-1"> {{form.uf.label}}  </label>
+            <div class="col-sm-5">
+                 {{ form.uf }}
+            </div>
+        </div>
+        <br />
+         <div class="form-group row">
+             <label id="id_cidade" class="col-sm-1"> {{form.cidade.label}}  </label>
+            <div class="col-sm-5">
+                 {{ form.cidade }}
+            </div>
+        </div>
+        <br />
+
+
+          <div class="form-group row">
+             <label id="id_bairro" class="col-sm-1"> {{form.bairro.label}}  </label>
+            <div class="col-sm-5">
+                 {{ form.bairro }}
+            </div>
+        </div>
+        <br />
+
+          <div class="form-group row">
+             <label id="id_rua" class="col-sm-1"> {{form.rua.label}}  </label>
+            <div class="col-sm-5">
+                 {{ form.rua }}
+            </div>
+        </div>
+        <br />
+
+          <div class="form-group row">
+             <label id="id_complemento" class="col-sm-1"> {{form.complemento.label}}  </label>
+            <div class="col-sm-5">
+                 {{ form.complemento }}
+            </div>
+        </div>
+        <br />
+        <h4> Telefones </h4>
+
+    <div class="form-group row">
+             <label id="id_residencial" class="col-sm-1"> {{form.numero1.label}}  </label>
+            <div class="col-sm-5">
+                 {{ form.numero1 }}
+            </div>
+        </div>
+        <br />
+          <div class="form-group row">
+             <label id="id_celular" class="col-sm-1"> {{form.numero2.label}}  </label>
+            <div class="col-sm-5">
+                 {{ form.numero2 }}
+            </div>
+        </div>
+        <br />
+    <div class="form-group row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+       <input type="submit" value="Cadastrar" class="form-control btn btn-primary"
+       name="cadastrar" /></div>
+    </div>
+
+
+    </form>
+
+    {%  if msg %} {{ msg  }} {% endif %}
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
